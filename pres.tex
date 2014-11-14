@@ -26,35 +26,69 @@ Alec Ten Harmsel}
 \end{frame}
 
 \begin{frame}{What Is A DSP?}
-    % TODO John
+    \begin{itemize}
+        \item Dedicated parallel multipliers
+        \item Dedicated parallel ALUs
+        \item Dedicated shifter
+        \item DMA Memory Controller
+        \item Dedicated FFT Hardware
+        \item Example: Analog Devices' Blackfin Architecture
+            \begin{itemize}
+                \item 2x 16-bit MACs
+                \item 2x 40-bit ALUs
+                \item 4x 8-bit ALUs
+                \item 1x 40-bit Shifter
+            \end{itemize}
+        \item Example: Texas Instruments' TMS320C55x Architecture
+            \begin{itemize}
+                \item 2x 16-bit MACs
+                \item 1x 40-bit ALU
+                \item 1x 16-bit ALU
+            \end{itemize}
+    \end{itemize}
 \end{frame}
 
 \begin{frame}{Uses}
     \begin{itemize}
-        \item Real-time data transformation % Cable box
-        \item High performance data transformation % Audio/Video encoding
-        \item Parallel mathematical computation % Bitcoin mining?
+        \item Real-time data transformation
+            \begin{itemize}
+                \item Cable box
+                \item Audio receiver
+                \item Sound cards
+                \item Automotive sensing
+                \item Network switching
+            \end{itemize}
+        \item High throughput, low power data transformation
+            \begin{itemize}
+                \item Audio/Video transcoding
+                \item Cryptocurrency mining
+            \end{itemize}
         \item Not for running a "modern" operating system % No virtual memory
         \item Not for generic workloads % Can't take advantage of hardware
     \end{itemize}
 \end{frame}
 
-\begin{frame}{How To Use}
-    % TODO John
-\end{frame}
-
 \begin{frame}{ISA}
     \begin{itemize}
         \item Mostly math instructions
-        \item Special instruction: MAC
-        \item Typically can have two (or more) opcodes in an instruction
+        \item Special instructions
+            \begin{itemize}
+                \item MAC (Multiply accumulate)
+                \item FIR (FIR filter)
+                \item Square Distance
+            \end{itemize}
+        \item Typically can have two (or more) opcodes in an instruction for
+            math instructions
         \item Few features: small interrupt table, no MMU, etc.
     \end{itemize}
     % Blackfins only have 7 or 9 configurable interrupts
     % MPUs are common, but no MMU for virtual memory
     % Typically have kernel and user mode
+    % Parallel MAC, parallel math and store, etc.
 \end{frame}
 
+% Plots only show fixed point, 16-bit MAC units. This is a litte biased, since
+% everything high-performance from TI is floating point.
 \begin{frame}{Performance vs. Price}
     \begin{center}
         \includegraphics[width=0.8\textwidth]{price_perf.pdf}
