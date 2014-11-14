@@ -4,24 +4,24 @@
 
 \begin{document}
 
+\beamertemplatenavigationsymbolsempty
+
+\title{DSP}
+\subtitle{Uses, Performance, Comparison to Traditional MCUs}
+\author{Dinker Ambe\\
+John Collins\\
+Alec Ten Harmsel}
+
+\frame{\titlepage}
+
 \begin{frame}{History}
     \begin{itemize}
         \item Need for a solution that can execute complex math required for DSP
         \item Originally, DSP applications implemented using bit-slice processors
-        \item First DSP created by TI in 1978, used in Speak & Spell children's toy
+        \item First DSP created by TI in 1978, used in Speak \& Spell children's toy
         \item Second generation ~(80s) processors become standalone devices
         \item Third generation ~(90s) procesors allow hardware acceleration for complex math
         \item Fourth generation (current), higher clock speeds, smaller packaging, reduced price
-    \end{itemize}
-\end{frame}
-
-\begin{frame}{Uses}
-    \begin{itemize}
-        \item Real-time data transformation % Cable box
-        \item High performance data transformation % Audio/Video encoding
-        \item Highly parallel computation % Bitcoin mining?
-        \item Not for linear jobs % Can't take advantage of the parallelism
-        \item Not for running a "modern" operating system % No virtual memory
     \end{itemize}
 \end{frame}
 
@@ -29,10 +29,38 @@
     % TODO John
 \end{frame}
 
+\begin{frame}{Uses}
+    \begin{itemize}
+        \item Real-time data transformation % Cable box
+        \item High performance data transformation % Audio/Video encoding
+        \item Parallel mathematical computation % Bitcoin mining?
+        \item Not for running a "modern" operating system % No virtual memory
+        \item Not for generic workloads % Can't take advantage of hardware
+    \end{itemize}
+\end{frame}
+
+\begin{frame}{How To Use}
+    % TODO John
+\end{frame}
+
+\begin{frame}{ISA}
+    \begin{itemize}
+        \item Mostly math instructions
+        \item Special instruction: MAC
+        \item Typically can have two (or more) opcodes in an instruction
+        \item Few features: small interrupt table, no MMU, etc.
+    \end{itemize}
+    % Blackfins only have 7 or 9 configurable interrupts
+    % MPUs are common, but no MMU for virtual memory
+    % Typically have kernel and user mode
+\end{frame}
+
 \begin{frame}{Performance vs. Price}
     \begin{center}
         \includegraphics[width=0.8\textwidth]{price_perf.pdf}
     \end{center}
+    % TI outlier is due to non-pipelined arch
+    % Discuss pipelining and amortized single-cycle MACs
 \end{frame}
 
 \begin{frame}{Performance vs. Power}
