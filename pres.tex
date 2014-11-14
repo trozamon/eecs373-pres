@@ -1,6 +1,7 @@
 \documentclass{beamer}
 
 \usepackage{graphicx}
+\usepackage{listings}
 
 \begin{document}
 
@@ -120,15 +121,29 @@ Alec Ten Harmsel}
 \end{frame}
 
 \begin{frame}{FIR Filter in C}
-    %snapshot of code
+    \begin{center}
+        {\tiny
+            \lstinputlisting{fir_example.c}
+        }
+    \end{center}
 \end{frame}
 
 \begin{frame}{FIR Filter in Assembly}
-    %snapshot of code
+    \begin{center}
+        {\tiny
+            \lstinputlisting[firstline=52]{fir_example.s}
+        }
+    \end{center}
+    % This is only the FIR part of the assembly. No interrupt setup or other
+    % setup is shown.
 \end{frame}
 
 \begin{frame}{FIR in Assembly in a C program}
-    %snapshot of code
+    \begin{center}
+        {\tiny
+            \lstinputlisting[firstline=36]{fir_asc_example.c}
+        }
+    \end{center}
 \end{frame}
 
 \end{document}
