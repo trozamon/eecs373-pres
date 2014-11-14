@@ -2,6 +2,7 @@
 
 \usepackage{graphicx}
 \usepackage{listings}
+\usepackage{textpos}
 
 \begin{document}
 
@@ -12,6 +13,12 @@
 \author{Dinker Ambe\\
 John Collins\\
 Alec Ten Harmsel}
+
+\addtobeamertemplate{frametitle}{}{%
+    \begin{textblock*}{70mm}(.96\textwidth,-0.75cm)
+        \includegraphics[clip=true,width=0.20\textwidth]{m.png}
+    \end{textblock*}
+}
 
 \frame{\titlepage}
 
