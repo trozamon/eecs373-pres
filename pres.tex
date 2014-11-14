@@ -5,7 +5,14 @@
 \begin{document}
 
 \begin{frame}{History}
-    % TODO John
+    \begin{itemize}
+        \item Need for a solution that can execute complex math required for DSP
+        \item Originally, DSP applications implemented using bit-slice processors
+        \item First DSP created by TI in 1978, used in Speak & Spell children's toy
+        \item Second generation ~(80s) processors become standalone devices
+        \item Third generation ~(90s) procesors allow hardware acceleration for complex math
+        \item Fourth generation (current), higher clock speeds, smaller packaging, reduced price
+    \end{itemize}
 \end{frame}
 
 \begin{frame}{Uses}
@@ -34,8 +41,32 @@
     \end{center}
 \end{frame}
 
-\begin{frame}{How To Use}
-    % TODO John
+\begin{frame}{How To Program a DSP}
+    \begin{itemize}
+        \item Architecture Description
+            \begin{itemize}
+                \item All available memory
+                \item Memory mapped to external peripherals
+            \end{itemize}
+        \item Source Code Generation
+            \begin{itemize}
+                \item Slow but easy: High level languages such as C
+                \item Fast but difficult: processor's native assembly
+                \item Compromise: High level for generic functions, assembly for DSP computations
+            \end{itemize}
+    \end{itemize}
+\end{frame}
+
+\begin{frame}{FIR Filter in C}
+    %snapshot of code
+\end{frame}
+
+\begin{frame}{FIR Filter in Assembly}
+    %snapshot of code
+\end{frame}
+
+\begin{frame}{FIR in Assembly in a C program}
+    %snapshot of code
 \end{frame}
 
 \begin{frame}{ISA}
