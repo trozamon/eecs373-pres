@@ -22,6 +22,26 @@ Alec Ten Harmsel}
 
 \frame{\titlepage}
 
+\begin{frame}{Why Use a DSP?}
+    \begin{itemize}
+        \item Faster than a MPU, and more flexible than an FPGA
+        \item Specific calculations used in processing analog signals are much faster with DSP
+	\begin{itemize}
+                \item Multiply Accumulate 
+                \item Finite Impulse Response
+                \item Compare
+        \end{itemize}
+        \item Only pipelined architecture won't cut it:
+	\begin{itemize}
+                \item DSPs have parallel memory units to fetch multiple data and instructions at the same time
+                \item Single cycle operations to make pipelining faster
+                \item Hardware controlled looping to minimize overhead
+        \end{itemize}
+        \item Multiple ALUs and computation units to perform instructions in parallel
+        \item DSPs can perform well in a whole class of computation related to real-life signals in 'real time'
+    \end{itemize}
+\end{frame}
+
 \begin{frame}{History}
     \begin{itemize}
         \item Need for a solution that can execute complex math required for DSP
