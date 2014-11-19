@@ -8,11 +8,12 @@
 
 \beamertemplatenavigationsymbolsempty
 
-\title{DSP}
-\subtitle{Uses, Performance, Comparison to Traditional MCUs}
+\title{Digital Signal Processors}
+\subtitle{Uses, Performance, Comparison to Traditional MCUs and FPGAs}
 \author{Dinker Ambe\\
-John Collins\\
+    John Collins\\
 Alec Ten Harmsel}
+\date{}
 
 \addtobeamertemplate{frametitle}{}{%
     \begin{textblock*}{70mm}(.96\textwidth,-0.75cm)
@@ -24,83 +25,74 @@ Alec Ten Harmsel}
 
 \begin{frame}{Why Use a DSP?}
     \begin{itemize}
-        \item Faster than a MPU, and more flexible than an FPGA
-        \item Specific calculations used in processing analog signals are much faster with DSP
-	\begin{itemize}
-                \item Multiply Accumulate 
-                \item Finite Impulse Response
-                \item Compare
-        \end{itemize}
-        \item Only pipelined architecture won't cut it:
-	\begin{itemize}
-                \item DSPs have parallel memory units to fetch multiple data and instructions at the same time
-                \item Single cycle operations to make pipelining faster
-                \item Hardware controlled looping to minimize overhead
-        \end{itemize}
-        \item Multiple ALUs and computation units to perform instructions in parallel
-        \item DSPs can perform well in a whole class of computation related to real-life signals in 'real time'
-        \item For Example, Hexagon DSP by Qualcomm can exceute FFT loop in 1 clock cycle
-	\begin{itemize}
-                \item The same FFT loop implementation in a RISC architecture would take 29 instructions.
-        \end{itemize}
+        \item Need to be able to watch 1080p video at 30Hz
+            \begin{itemize}
+                \item De-muxing video from cable/antenna
+                \item Transform to video out to TV
+                \item Ridiculously parallel problem
+                \item Repetive math
+                \item Real-time; around 3.33ms per frame
+            \end{itemize}
+        \item Much more power efficient than an MPU or CPU
+            \begin{itemize}
+                \item Many DSP chips can execute an FFT loop in 1 clock cycle
+                \item The same FFT loop implementation on an MPU takes 29
+                    instructions
+                \item A modern DSP chip can transcode video at the same speed
+                    as a high-range computer for a fraction of the price and
+                    power
+            \end{itemize}
+        \item Much more flexible than an FPGA
+            \begin{itemize}
+                \item DSP chips are similar to an FPGA ``with batteries
+                    included''
+                \item Standard ISA, special memory architecture, etc.
+            \end{itemize}
+    \end{itemize}
+\end{frame}
+
+\begin{frame}{Uses}
+    \begin{itemize}
+        \item Real-time data transformation
+            \begin{itemize}
+                \item Cable box
+                \item Audio receiver
+                \item Automotive sensing
+                \item Network switching
+            \end{itemize}
+        \item High throughput, low power data transformation
+            \begin{itemize}
+                \item Audio/video transcoding
+                \item Cryptocurrency mining
+            \end{itemize}
+        \item Not for running a "modern" operating system % No virtual memory
+        \item Not for generic workloads % Can't take advantage of hardware
     \end{itemize}
 \end{frame}
 
 \begin{frame}{History}
     \begin{itemize}
-        \item Need for a solution that can execute complex math required for DSP
-        \item Originally, DSP applications implemented using bit-slice processors
-        \item First DSP created by TI in 1978, used in Speak \& Spell children's toy
+        \item Need for a solution that can execute complex math required for
+            DSP
+        \item Originally, DSP applications implemented using bit-slice
+            processors
+        \item First DSP created by TI in 1978, used in Speak \& Spell
+            children's toy
         \item Second generation ~(80s) processors become standalone devices
-        \item Third generation ~(90s) procesors allow hardware acceleration for complex math
-        \item Fourth generation (current), higher clock speeds, smaller packaging, reduced price
+        \item Third generation ~(90s) procesors allow hardware acceleration for
+            complex math
+        \item Fourth generation (current), higher clock speeds, smaller
+            packaging, reduced price
     \end{itemize}
 \end{frame}
 
-\begin{frame}{What Is A DSP?}
+\begin{frame}{Typical DSP Hardware}
     \begin{itemize}
-        \item Specialized processor for Digital Signal Processing
-        \item Capabilities of a DSP:
-            \begin{itemize}
-                \item Measure
-                \item Filter
-                \item Compare
-            \end{itemize}
-        \item These actions are perfomed on analog signals
-        \item Most multiprocessors can perform these tasks
-            \begin{itemize}
-                \item But DSPs get better performance to power 
-                \item Used in low-power, mobile, with a need for speed 
-            \end{itemize}
-     \end{itemize}
-\end{frame}
-
-\begin{frame}{What Is A DSP?}
-    \begin{itemize}
-        \item Requirement for low-latency
-            \begin{itemize}
-                \item Most DSP algorithms must be performed on a lot of incoming data
-                \item Must be calculated repeatedly
-                \item Used when there is a constrained time limit for calculations
-                    \includegraphics[width=0.6\textwidth]{block_diagram.png}
-            \end{itemize}
-        \item Can Perform Add, Sub, Mult, and Div very quickly and efficiently
-	\item Wide range of power and performance (Texas Instruments)
-	     \begin{itemize}
-                \item Ultra-low power 16-bit with FFT acceleration (300 MHz)
-                \item Power Optimized 32-bit fixed/float DSP (1+ GHz)
-                \item High performance multicore 32-bit accellerated DSP (16 GHz)
-            \end{itemize}
-     \end{itemize}
-\end{frame}
-
-\begin{frame}{What Is A DSP?}
-    \begin{itemize}
-        \item Dedicated parallel multipliers
-        \item Dedicated parallel ALUs
-        \item Dedicated shifter
-        \item DMA Memory Controller
-        \item Dedicated FFT Hardware
+        \item Parallel multipliers
+        \item Parallel ALUs
+        \item Parallel DMA memory controller
+        \item Shifter
+        \item Dedicated FFT hardware
         \item Example: Analog Devices' Blackfin Architecture
             \begin{itemize}
                 \item 2x 16-bit MACs
@@ -117,23 +109,23 @@ Alec Ten Harmsel}
     \end{itemize}
 \end{frame}
 
-\begin{frame}{Uses}
+\begin{frame}{DSP Hardware Benefits}
     \begin{itemize}
-        \item Real-time data transformation
+        \item Real-time and low-latency
             \begin{itemize}
-                \item Cable box
-                \item Audio receiver
-                \item Sound cards
-                \item Automotive sensing
-                \item Network switching
+                \item Most DSP algorithms must be performed on a lot of incoming data
+                \item Must be calculated repeatedly
+                \item Used when there is a constrained time limit for calculations
+                    \includegraphics[width=0.6\textwidth]{block_diagram.png}
             \end{itemize}
-        \item High throughput, low power data transformation
+        \item Can perform add, sub, mult, and div quickly and in parallel
+        \item Parallel load, store
+        \item Wide range of power and performance (Texas Instruments)
             \begin{itemize}
-                \item Audio/Video transcoding
-                \item Cryptocurrency mining
+                \item Ultra-low power 16-bit with FFT acceleration (300 MHz)
+                \item Power Optimized 32-bit fixed/float DSP (1+ GHz)
+                \item High performance multicore 32-bit accellerated DSP (16 GHz)
             \end{itemize}
-        \item Not for running a "modern" operating system % No virtual memory
-        \item Not for generic workloads % Can't take advantage of hardware
     \end{itemize}
 \end{frame}
 
