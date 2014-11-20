@@ -23,6 +23,16 @@ Alec Ten Harmsel}
 
 \frame{\titlepage}
 
+\begin{frame}{What is Digital Signal Processing}
+    \begin{itemize}
+        \item Mathematical manipulation of a discrete information signal
+        \item Why do I care?
+            \begin{itemize}
+                \item Any digital system requires digital signal processing to communicate with other systems
+            \end{itemize}
+    \end{itemize}
+\end{frame}
+
 \begin{frame}{Why Use a DSP?}
     \begin{itemize}
         \item Need to be able to watch 1080p video at 30Hz
@@ -180,7 +190,21 @@ Alec Ten Harmsel}
     \end{itemize}
 \end{frame}
 
+\begin{frame}{FIR Filter}
+    \begin{itemize}
+        \item N Point moving average equation
+        \item Can implement Bandpass, Lowpass, Highpass filters
+        \item MAC instruction is useful for FIR equation
+        \item y[n] = b0*x[n] + b1*x[n-1] +...+ bN*x[n-N]
+        %include FIR.png
+    \end{itemize}
+\end{frame}
+
 \begin{frame}{FIR Filter in C}
+    %have equation at the top for reference
+    \begin{itemize}
+        \item y[n] = b0*x[n] + b1*x[n-1] +...+ bN*x[n-N]
+    \end{itemize}
     \begin{center}
         {\tiny
             \lstinputlisting{fir_example.c}
@@ -189,6 +213,10 @@ Alec Ten Harmsel}
 \end{frame}
 
 \begin{frame}{FIR Filter in Assembly}
+    %have equation at the top for reference
+    \begin{itemize}
+        \item y[n] = b0*x[n] + b1*x[n-1] +...+ bN*x[n-N]
+    \end{itemize}
     \begin{center}
         {\tiny
             \lstinputlisting[firstline=52]{fir_example.s}
@@ -198,12 +226,6 @@ Alec Ten Harmsel}
     % setup is shown.
 \end{frame}
 
-\begin{frame}{FIR in Assembly in a C program}
-    \begin{center}
-        {\tiny
-            \lstinputlisting[firstline=36]{fir_asc_example.c}
-        }
-    \end{center}
-\end{frame}
+%remove the assembly in C slide, unneeded
 
 \end{document}
